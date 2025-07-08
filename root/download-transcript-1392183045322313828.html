@@ -1,0 +1,30 @@
+
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="UTF-8" />
+              <title>Téléchargement du transcript</title>
+            </head>
+            <body>
+              <script>
+                const fileUrl = "https://8-dynasty.github.io/ticket-transcripts/root/transcript-1392183045322313828.html";
+                const fileName = "transcript-1392183045322313828.html";
+                fetch(fileUrl)
+                  .then(resp => resp.blob())
+                  .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    a.remove();
+                  })
+                  .catch(() => alert('Erreur lors du téléchargement'));
+              </script>
+              <p>Si le téléchargement ne démarre pas automatiquement, <a href="https://8-dynasty.github.io/ticket-transcripts/root/transcript-1392183045322313828.html" download>Télécharger ici</a>.</p>
+            </body>
+            </html>
+            
